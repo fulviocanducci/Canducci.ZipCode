@@ -8,7 +8,7 @@
             string city,
             string uf,
             int ibge,
-            bool erro, 
+            /*bool erro, */
             string complement,
             string gia)
         {
@@ -18,7 +18,7 @@
             City = city;
             Uf = uf;
             Ibge = ibge;
-            Erro = erro;
+            //Erro = erro;
             Complement = complement;
             Gia = gia;
         }
@@ -41,8 +41,8 @@
         [Newtonsoft.Json.JsonProperty("ibge")]
         public int Ibge { get; }
 
-        [Newtonsoft.Json.JsonProperty("erro")]
-        public bool Erro { get; }
+        //[Newtonsoft.Json.JsonProperty("erro")]
+        //public bool Erro { get; }
 
         [Newtonsoft.Json.JsonProperty("complemento")]
         public string Complement { get; }
