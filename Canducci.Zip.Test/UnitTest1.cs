@@ -36,5 +36,12 @@ namespace Canducci.Zip.Test
             Assert.IsFalse(ZipCode.TryParse("", out ZipCode zipCode));
             Assert.IsNull(zipCode);
         }
+
+        [TestMethod]
+        public void TestInstanceZipCodeItemInstance()
+        {
+            var zipCodeItem = new ZipCodeItem("", "", "", "", "", 0, false, "","");
+            Assert.IsInstanceOfType(zipCodeItem, typeof(ZipCodeItem));            
+        }
     }
 }
