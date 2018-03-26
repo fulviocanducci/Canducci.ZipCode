@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Text;
-
-namespace Canducci.Zip.Internals
+﻿namespace Canducci.Zip.Internals
 {
     internal class ZipCodeRequest: System.IDisposable
     {
-        private IDictionary<string, string> Urls =>
-             new Dictionary<string, string>
+        private System.Collections.Generic.IDictionary<string, string> Urls =>
+             new System.Collections.Generic.Dictionary<string, string>
              {
                  ["zip"] = "http://viacep.com.br/ws/{0}/xml/",
                  ["address"] = "http://viacep.com.br/ws/{0}/{1}/{2}/xml/"
