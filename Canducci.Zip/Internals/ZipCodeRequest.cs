@@ -21,20 +21,32 @@
 #endif
         }
 #if NET40
-        internal string GetJsonString(string value, string key = "zip")
+        internal string GetJsonString(string value)
         {
-            return Request.DownloadString(string.Format(Urls[key], value));
+            return Request.DownloadString(string.Format(Urls["zip"], value));
+        }
+        internal string GetJsonString(string uf, string city, string address)
+        {
+            return Request.DownloadString(string.Format(Urls["address"], uf, city, address));
         }
 #endif
 #if NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471 || NETSTANDARD2_0
-        internal async System.Threading.Tasks.Task<string> GetJsonStringAsync(string value, string key = "zip")
+        internal async System.Threading.Tasks.Task<string> GetJsonStringAsync(string value)
         {
-            return await Request.DownloadStringTaskAsync(string.Format(Urls[key], value));
+            return await Request.DownloadStringTaskAsync(string.Format(Urls["zip"], value));
+        }
+        internal async System.Threading.Tasks.Task<string> GetJsonStringAsync(string uf, string city, string address)
+        {
+            return await Request.DownloadStringTaskAsync(string.Format(Urls["address"], uf, city, address));
         }
 #elif NETSTANDARD1_3 ||  NETSTANDARD1_4 ||  NETSTANDARD1_5 ||  NETSTANDARD1_6
-        internal async System.Threading.Tasks.Task<string> GetJsonStringAsync(string value, string key = "zip")
+        internal async System.Threading.Tasks.Task<string> GetJsonStringAsync(string value)
         {           
-            return await Request.GetStringAsync(string.Format(Urls[key], value));
+            return await Request.GetStringAsync(string.Format(Urls["zip"], value));
+        }
+        internal async System.Threading.Tasks.Task<string> GetJsonStringAsync(string uf, string city, string address)
+        {
+            return await Request.GetStringAsync(string.Format(Urls["address"], uf, city, address));
         }
 #endif
         public void Dispose()
@@ -44,6 +56,7 @@
             System.GC.SuppressFinalize(this);
         }
 
-        internal static ZipCodeRequest Create() => new ZipCodeRequest();
+        internal static ZipCodeRequest Create() 
+            => new ZipCodeRequest();
     }
 }

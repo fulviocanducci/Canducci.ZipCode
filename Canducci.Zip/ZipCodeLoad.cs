@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Canducci.Zip
+﻿namespace Canducci.Zip
 {
     public class ZipCodeLoad : System.IDisposable
     {
@@ -17,7 +15,9 @@ namespace Canducci.Zip
         {
             Validations.ZipCodeItemValid valid = Convert.ConvertZipCodeItemValid(json);
             if (valid.Erro)
+            {
                 return new ZipCodeResult(false);
+            }
             return new ZipCodeResult(true, Convert.ConvertZipCodeItem(json));
         }
 

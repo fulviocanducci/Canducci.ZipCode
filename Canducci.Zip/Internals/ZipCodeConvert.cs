@@ -19,6 +19,11 @@
             return Convert<ZipCodeItem>(value);
         }
 
+        internal AddressCodeItem ConvertZipCodeItems(string value)
+        {
+            return Convert<AddressCodeItem>(value);
+        }
+
         internal Validations.ZipCodeItemValid ConvertZipCodeItemValid(string value)
         {
             return Convert<Validations.ZipCodeItemValid>(value);
@@ -29,7 +34,8 @@
             System.GC.SuppressFinalize(this);
         }
 
-        internal static ZipCodeConvert Create() => new ZipCodeConvert();
+        internal static ZipCodeConvert Create() 
+            => new ZipCodeConvert();
 
     }
 }

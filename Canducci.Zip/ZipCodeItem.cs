@@ -17,8 +17,7 @@
             District = district;
             City = city;
             Uf = uf;
-            Ibge = ibge;
-            //Erro = erro;
+            Ibge = ibge;            
             Complement = complement;
             Gia = gia;
         }
@@ -48,17 +47,3 @@
         public string Gia { get; }
     }
 }
-
-/*
- * {
-      "cep": "01001-000",
-      "logradouro": "Praça da Sé",
-      "complemento": "lado ímpar",
-      "bairro": "Sé",
-      "localidade": "São Paulo",
-      "uf": "SP",
-      "unidade": "",
-      "ibge": "3550308",
-      "gia": "1004"
-    }
-    **/
