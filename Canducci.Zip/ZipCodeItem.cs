@@ -2,13 +2,13 @@
 {
     public sealed class ZipCodeItem
     {
-        public ZipCodeItem(string zip, 
+        [Newtonsoft.Json.JsonConstructor()]
+        internal ZipCodeItem(string zip, 
             string address,
             string district,
             string city,
             string uf,
-            int ibge,
-            /*bool erro, */
+            int ibge,            
             string complement,
             string gia)
         {
@@ -39,10 +39,7 @@
         public string Uf { get; }
 
         [Newtonsoft.Json.JsonProperty("ibge")]
-        public int Ibge { get; }
-
-        //[Newtonsoft.Json.JsonProperty("erro")]
-        //public bool Erro { get; }
+        public int Ibge { get; }        
 
         [Newtonsoft.Json.JsonProperty("complemento")]
         public string Complement { get; }
