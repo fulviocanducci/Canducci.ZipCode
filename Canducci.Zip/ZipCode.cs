@@ -66,5 +66,13 @@ namespace Canducci.Zip
             return false;
         }
         #endregion
+
+        #region operator_implict_ZipCode_And_string
+        public static implicit operator string(ZipCode value)
+            => value.Zip;
+
+        public static implicit operator ZipCode(string value) 
+            => Parse(value);
+        #endregion
     }
 }

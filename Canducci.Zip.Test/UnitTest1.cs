@@ -1,23 +1,23 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Canducci.Zip;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Canducci.Zip.Test
 {
     [TestClass]
     public class UnitTest1
     {
+        public const string ValueZip = "01001000";
+
         [TestMethod]
         public void TestInstanceZipCodeParse()
         {
-            var zipCode = ZipCode.Parse("01000-000");
+            var zipCode = ZipCode.Parse(ValueZip);
             Assert.IsInstanceOfType(zipCode, typeof(ZipCode));
-            Assert.AreEqual("01000000", zipCode.Zip);
+            Assert.AreEqual(ValueZip, zipCode.Zip);
         }
 
         [TestMethod]
         public void TestInstanceZipCodeTryParse()
         {
-            Assert.IsTrue(ZipCode.TryParse("01000-000", out ZipCode zipCode));
+            Assert.IsTrue(ZipCode.TryParse(ValueZip, out ZipCode zipCode));
             Assert.IsInstanceOfType(zipCode, typeof(ZipCode));
             Assert.IsNotNull(zipCode);
         }
@@ -35,13 +35,46 @@ namespace Canducci.Zip.Test
         {
             Assert.IsFalse(ZipCode.TryParse("", out ZipCode zipCode));
             Assert.IsNull(zipCode);
+        }        
+
+        [TestMethod]
+        public void TestInstanceZipCodeLoadInstance()
+        {
+            var zipCodeLoad = new ZipCodeLoad();
+            Assert.IsInstanceOfType(zipCodeLoad, typeof(ZipCodeLoad));
         }
 
         [TestMethod]
-        public void TestInstanceZipCodeItemInstance()
+        public void TestInstanceZipCodeExplicitImplictConvert()
         {
-            var zipCodeItem = new ZipCodeItem("", "", "", "", "", 0, false, "","");
-            Assert.IsInstanceOfType(zipCodeItem, typeof(ZipCodeItem));            
+            ZipCode zipCode = ValueZip;            
+            string value = zipCode;
+
+            Assert.IsInstanceOfType(zipCode, typeof(ZipCode));
+            Assert.IsInstanceOfType(value, typeof(string));
+            Assert.AreEqual(zipCode.Zip, value);
+            Assert.AreNotEqual(zipCode, value);
         }
+
+        [TestMethod]
+        public async System.Threading.Tasks.Task TestInstanceZipCodeLoadAndZipCodeResultAndZipCodeItemSuccess()
+        {
+            ZipCodeLoad zipCodeLoad = new ZipCodeLoad();
+            ZipCodeResult zipCodeResult = await zipCodeLoad.FindAsync(ValueZip);
+            Assert.IsInstanceOfType(zipCodeLoad, typeof(ZipCodeLoad));
+            Assert.IsInstanceOfType(zipCodeResult, typeof(ZipCodeResult));
+            Assert.IsInstanceOfType(zipCodeResult.ZipCodeItem, typeof(ZipCodeItem));
+            Assert.IsTrue(zipCodeResult.IsValid);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ZipCodeException), "Error Parse")]
+        public async System.Threading.Tasks.Task TestInstanceZipCodeLoadAndZipCodeResultAndZipCodeItemError()
+        {
+            ZipCodeLoad zipCodeLoad = new ZipCodeLoad();
+            ZipCodeResult zipCodeResult = await zipCodeLoad.FindAsync("");            
+            Assert.Fail();
+        }
+
     }
 }
