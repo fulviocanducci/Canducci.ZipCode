@@ -3,19 +3,25 @@
     class Program
     {
         static void Main(string[] args)
-        {
-            //ZipCodeLoad load = new ZipCodeLoad();
-            //ZipCodeResult result = load.Find("19200000");
-            //if (result)
-            //{
-            //    ZipCodeItem zipCodeItem = result;
-            //}
+        {           
+            
+            ZipCodeLoad zipCodeLoad = new ZipCodeLoad();
+            ZipCodeResult result0 = zipCodeLoad.Find("19200000");
+            if (result0)
+            {
+                ZipCodeItem zipCodeItem = result0;
+            }
+            
+            AddressCodeLoad addressCodeLoad = new AddressCodeLoad();
+            AddressCode addressCode = AddressCode.Parse(ZipCodeUf.SP, "Presidente Prudente", "AVE");
+            AddressCodeResult result1 = addressCodeLoad.Find(addressCode);
+            if (result1)
+            {
+                AddressCodeItem items = result1;
+            }
 
-            //load.Dispose();
-
-            AddressCodeLoad load = new AddressCodeLoad();
-            AddressCodeResult result = load.Find(new AddressCode(ZipCodeUf.SP, "Presidente Prudente", "AVE"));
-            load.Dispose();
+            zipCodeLoad.Dispose();
+            addressCodeLoad.Dispose();
 
         }
     }

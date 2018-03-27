@@ -5,10 +5,17 @@
         public bool IsValid { get; }
         public AddressCodeItem AddressCodeItem { get; }
 
-        internal AddressCodeResult(bool isValid, AddressCodeItem addressCodeItem = null)
+        internal AddressCodeResult()
         {
-            IsValid = isValid;
-            AddressCodeItem = addressCodeItem;
         }
+
+        internal AddressCodeResult(AddressCodeItem addressCodeItem)
+        {
+            AddressCodeItem = addressCodeItem;
+            IsValid = (addressCodeItem?.Count > 0);
+        }
+
+        public static implicit operator bool(AddressCodeResult v)
+            => v.IsValid && v?.AddressCodeItem?.Count > 0;
     }
 }

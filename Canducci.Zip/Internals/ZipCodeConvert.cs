@@ -2,31 +2,26 @@
 {
     internal class ZipCodeConvert : System.IDisposable
     {
-        public ZipCodeConvert() { }
+        internal ZipCodeConvert() { }
 
-        internal T Convert<T>(string value)
+        internal T ConvertTo<T>(string value)
         {
             return (T)Newtonsoft.Json.JsonConvert.DeserializeObject(value, typeof(T));
         }
 
-        internal dynamic Convert(string value)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject(value);
-        }
-
         internal ZipCodeItem ConvertZipCodeItem(string value)
         {
-            return Convert<ZipCodeItem>(value);
+            return ConvertTo<ZipCodeItem>(value);
         }
 
         internal AddressCodeItem ConvertZipCodeItems(string value)
         {
-            return Convert<AddressCodeItem>(value);
+            return ConvertTo<AddressCodeItem>(value);
         }
 
         internal Validations.ZipCodeItemValid ConvertZipCodeItemValid(string value)
         {
-            return Convert<Validations.ZipCodeItemValid>(value);
+            return ConvertTo<Validations.ZipCodeItemValid>(value);
         }
 
         public void Dispose()

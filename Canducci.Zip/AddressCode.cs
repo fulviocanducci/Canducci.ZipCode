@@ -1,23 +1,27 @@
 ﻿namespace Canducci.Zip
 {
     public sealed class AddressCode
-    {        
+    {
+        #region public_property
         public ZipCodeUf Uf { get; private set; }        
         public string City { get; private set; }        
         public string Address { get; private set; }
+        #endregion
 
-        public AddressCode(ZipCodeUf uf, string city, string address)
+        #region internal      
+        internal AddressCode(ZipCodeUf uf, string city, string address)
         {
             Uf = uf;
             City = city;
             Address = address;
-        }
-
+        }         
         internal static bool Valid(string uf, string city, string address)
         {
             return (uf.Length == 2 && city.Length > 2 && address.Length > 2);
         }
+        #endregion
 
+        #region public_static
         public static AddressCode Parse(ZipCodeUf uf, string city, string address)
         {
             if (Valid(uf.ToString(), city, address))
@@ -38,5 +42,6 @@
             addressCode = null;
             return false;
         }
+        #endregion
     }
 }

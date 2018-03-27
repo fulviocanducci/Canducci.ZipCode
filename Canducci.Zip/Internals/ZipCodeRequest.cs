@@ -1,7 +1,7 @@
 ﻿namespace Canducci.Zip.Internals
 {
     internal class ZipCodeRequest: System.IDisposable
-    {
+    {            
         internal System.Collections.Generic.IDictionary<string, string> Urls =>
              new System.Collections.Generic.Dictionary<string, string>
              {
@@ -14,11 +14,11 @@
 #elif NETSTANDARD1_3 ||  NETSTANDARD1_4 ||  NETSTANDARD1_5 ||  NETSTANDARD1_6
         internal System.Net.Http.HttpClient Request = new System.Net.Http.HttpClient();
 #endif
-        public ZipCodeRequest()
+        internal ZipCodeRequest()
         {
 #if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471 || NETSTANDARD2_0
-            Request.Encoding = System.Text.Encoding.UTF8;            
-#endif
+            Request.Encoding = System.Text.Encoding.UTF8;
+#endif           
         }
 #if NET40
         internal string GetJsonString(string value)
