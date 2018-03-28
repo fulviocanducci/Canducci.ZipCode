@@ -62,6 +62,7 @@ Tanto no objeto de instancia das classes `AddressCodeLoad` e `ZipCodeLoad` exist
 IZipCodeLoad zipCodeLoad = new ZipCodeLoad();
 IAddressCodeLoad addressCodeLoad = new AddressCodeLoad();
 
-System.Collections.Generic.IDictionary<string, string> items_List = zipCodeLoad.UFToList(); 
-System.Collections.Generic.IDictionary<string, string> items0_List = addressCodeLoad.UFToList();
+System.Collections.Generic.IDictionary<string, string> items0_List = zipCodeLoad.UFToList(); 
+System.Collections.Generic.IDictionary<string, string> items1_List = addressCodeLoad.UFToList();
 ```
+Essas duas listas são da mesma instância e são geradas a partir do `Enum` `ZipCodeUf`, é mesmo para facilitar em momentos de criação das duas telas.
