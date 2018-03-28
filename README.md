@@ -43,7 +43,6 @@ ZipCodeItem.Gia        // gia
 
 ### Busca de uma lista de CEP
 
-
 ```csharp
 IAddressCodeLoad addressCodeLoad = new AddressCodeLoad();
 AddressCode addressCode = AddressCode.Parse(ZipCodeUf.SP, "Presidente Prudente", "AVE");
@@ -53,4 +52,16 @@ if (result1) // ou result1.IsValid
     AddressCodeItem items = result1; // ou  AddressCodeItem items = result1.Value;
 }
 ```
-Note que a saída da classe AddressCodeItem é uma enumeração (`List<>`) de `ZipCodeItem`, ou seja, `List<ZipCodeItem>`.
+Note que a saída da classe `AddressCodeItem` é uma enumeração (`List<>`) de `ZipCodeItem`, ou seja, `List<ZipCodeItem>`.
+
+### Lista de Unidade Federativa
+
+Tanto no objeto de instancia das classes `AddressCodeLoad` e `ZipCodeLoad` existe um método de extensão que retorna um `IDictionary<string, string>` que pode ser utilizado em suas telas para padronização da informação, ***exemplo***: 
+
+```
+IZipCodeLoad zipCodeLoad = new ZipCodeLoad();
+IAddressCodeLoad addressCodeLoad = new AddressCodeLoad();
+
+System.Collections.Generic.IDictionary<string, string> items_List = zipCodeLoad.UFToList(); 
+System.Collections.Generic.IDictionary<string, string> items0_List = addressCodeLoad.UFToList();
+```
