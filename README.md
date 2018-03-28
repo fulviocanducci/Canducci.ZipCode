@@ -21,11 +21,24 @@ Para a busca de dados de um determinado número de **CEP** instancie a classe `Z
 
 ```csharp
 IZipCodeLoad zipCodeLoad = new ZipCodeLoad();
-ZipCodeResult result0 = zipCodeLoad.Find("19200000");
+ZipCodeResult result0 = zipCodeLoad.Find("01001000");
 if (result0) // ou result0.IsValid
 {
     ZipCodeItem zipCodeItem = result0; //ou zipCodeItem zipCodeItem = result0.Value;
 }
+```
+
+A saída da classe `ZipCodeItem` é a seguir:
+
+```
+ZipCodeItem.Zip        // cep
+ZipCodeItem.Address    // logradouro
+ZipCodeItem.District   // bairro
+ZipCodeItem.City       // localidade
+ZipCodeItem.Uf         // uf
+ZipCodeItem.Ibge       // Ibge
+ZipCodeItem.Complement // complemento
+ZipCodeItem.Gia        // gia
 ```
 
 ### Busca de uma lista de CEP
@@ -40,3 +53,4 @@ if (result1) // ou result1.IsValid
     AddressCodeItem items = result1; // ou  AddressCodeItem items = result1.Value;
 }
 ```
+Note que a saída da classe AddressCodeItem é uma enumeração (`List<>`) de `ZipCodeItem`, ou seja, `List<ZipCodeItem>`.
