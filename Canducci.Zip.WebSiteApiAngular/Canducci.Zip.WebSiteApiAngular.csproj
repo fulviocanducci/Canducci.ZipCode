@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Canducci.Zip\Canducci.Zip.csproj" />
+    <ProjectReference Include="..\Canducci.Zip.Mvc.Core\Canducci.Zip.Mvc.Core.csproj" />
   </ItemGroup>
 
 </Project>

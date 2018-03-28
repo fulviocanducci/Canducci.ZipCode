@@ -9,7 +9,8 @@
             ZipCodeResult result0 = zipCodeLoad.Find("19200000");
             if (result0)
             {
-                ZipCodeItem zipCodeItem = result0;
+                ZipCodeItem zipCodeItem = result0; //ou zipCodeItem zipCodeItem = result0.Value
+
             }
 
             IAddressCodeLoad addressCodeLoad = new AddressCodeLoad();
@@ -20,8 +21,8 @@
                 AddressCodeItem items = result1;
             }
 
-            var items_List = zipCodeLoad.UFToList();
-            var items0_List = addressCodeLoad.UFToList();
+            System.Collections.Generic.IDictionary<string, string> items_List = zipCodeLoad.UFToList();
+            System.Collections.Generic.IDictionary<string, string> items0_List = addressCodeLoad.UFToList();
 
             zipCodeLoad.Dispose();
             addressCodeLoad.Dispose();

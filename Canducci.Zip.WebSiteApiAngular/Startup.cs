@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Canducci.Zip.Mvc.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,8 +17,7 @@ namespace Canducci.Zip.WebSiteApiAngular
                 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IZipCodeLoad, ZipCodeLoad>();
-            services.AddScoped<IAddressCodeLoad, AddressCodeLoad>();
+            services.AddZipCodeAndAdressCodeServices();
             services.AddMvc();
         }
 
