@@ -21,8 +21,8 @@ namespace Canducci.Zip.WebSiteApiAngular
                 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ZipCodeLoad>();
-            services.AddScoped<AddressCodeLoad>();
+            services.AddScoped<IZipCodeLoad, ZipCodeLoad>();
+            services.AddScoped<IAddressCodeLoad, AddressCodeLoad>();
             services.AddMvc();
         }
 

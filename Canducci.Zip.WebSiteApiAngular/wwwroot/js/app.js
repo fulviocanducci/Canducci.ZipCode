@@ -36,6 +36,7 @@ app.controller("zipCodeCtrl", ["$scope", "$location", "$http", function ($scope,
             url: '/zipcode',
             method: "POST",
             data: { 'zip': $scope.zip },
+           
         }).then(function (response) {
             $scope.model = response.data;
             console.log($scope.model);

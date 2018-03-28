@@ -63,7 +63,7 @@ namespace Canducci.Zip.Test
             ZipCodeResult zipCodeResult = await zipCodeLoad.FindAsync(ValueZip);
             Assert.IsInstanceOfType(zipCodeLoad, typeof(ZipCodeLoad));
             Assert.IsInstanceOfType(zipCodeResult, typeof(ZipCodeResult));
-            Assert.IsInstanceOfType(zipCodeResult.ZipCodeItem, typeof(ZipCodeItem));
+            Assert.IsInstanceOfType(zipCodeResult.Value, typeof(ZipCodeItem));
             Assert.IsTrue(zipCodeResult.IsValid);
         }
 

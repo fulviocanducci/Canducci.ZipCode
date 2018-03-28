@@ -1,9 +1,9 @@
 ﻿namespace Canducci.Zip
 {
     /// <summary>
-    /// ZipCodeLoad Class
+    /// ZipCodeLoad class
     /// </summary>
-    public class ZipCodeLoad : System.IDisposable
+    public class ZipCodeLoad : IZipCodeLoad
     {
         internal Internals.ZipCodeConvert Convert;
         internal Internals.ZipCodeRequest Request;

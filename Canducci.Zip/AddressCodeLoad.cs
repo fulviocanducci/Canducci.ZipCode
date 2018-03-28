@@ -3,7 +3,7 @@
     /// <summary>
     /// AddressCodeLoad Class
     /// </summary>
-    public sealed class AddressCodeLoad
+    public sealed class AddressCodeLoad : IAddressCodeLoad
     {
         internal Internals.ZipCodeConvert Convert;
         internal Internals.ZipCodeRequest Request;

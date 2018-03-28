@@ -2,8 +2,6 @@
 {
     public sealed class ZipCodeItem
     {
-        //internal ZipCodeItem() { }
-
         [Newtonsoft.Json.JsonConstructor()]
         internal ZipCodeItem(string zip, 
             string address,

@@ -4,6 +4,6 @@
     public sealed class AddressCodeItem : System.Collections.Generic.List<ZipCodeItem>
     {
         public static implicit operator AddressCodeItem(AddressCodeResult v) 
-            => v.AddressCodeItem;        
+            => v.Value;        
     }
 }

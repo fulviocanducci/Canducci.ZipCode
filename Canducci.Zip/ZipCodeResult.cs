@@ -3,16 +3,20 @@
     public sealed class ZipCodeResult
     {
         public bool IsValid { get; }
-        public ZipCodeItem ZipCodeItem { get; }
+        public ZipCodeItem Value { get; }
+        internal ZipCodeResult(bool isValid)
+            : this(isValid, null)
+        {
+        }
 
-        internal ZipCodeResult(bool isValid, ZipCodeItem zipCodeItem = null)
+        internal ZipCodeResult(bool isValid, ZipCodeItem value)
         {
             IsValid = isValid;
-            ZipCodeItem = zipCodeItem;
+            Value = value;
         }        
 
         public static implicit operator ZipCodeItem(ZipCodeResult zipCodeResult)
-            => zipCodeResult.ZipCodeItem;
+            => zipCodeResult.Value;
 
         public static implicit operator bool(ZipCodeResult zipCodeResult)
             => zipCodeResult.IsValid;
