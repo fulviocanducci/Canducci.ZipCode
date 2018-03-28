@@ -45,7 +45,7 @@ ZipCodeItem.Gia        // gia
 
 ```csharp
 IAddressCodeLoad addressCodeLoad = new AddressCodeLoad();
-AddressCode addressCode = AddressCode.Parse(ZipCodeUf.SP, "Presidente Prudente", "AVE");
+AddressCode addressCode = AddressCode.Parse(ZipCodeUf.SP, "SÃO PAULO", "AVE");
 AddressCodeResult result1 = addressCodeLoad.Find(addressCode);
 if (result1) // ou result1.IsValid
 {
