@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Canducci.Zip.WebSiteApiAngular.Models;
-using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,7 +34,7 @@ namespace Canducci.Zip.WebSiteApiAngular.Controllers
                     }
                 }
             }
-            return Json(new { });
+            return Json(await Task.FromResult<object>(null));
         }
 
 
