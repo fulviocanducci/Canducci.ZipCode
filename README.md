@@ -65,4 +65,4 @@ IAddressCodeLoad addressCodeLoad = new AddressCodeLoad();
 System.Collections.Generic.IDictionary<string, string> items0_List = zipCodeLoad.UFToList(); 
 System.Collections.Generic.IDictionary<string, string> items1_List = addressCodeLoad.UFToList();
 ```
-Essas duas listas são da mesma instância e são geradas a partir do `Enum` `ZipCodeUf`, é mesmo para facilitar em momentos de criação das duas telas.
+Essas duas variaveis (`items0_List` e `items1_List`) são da mesma instância e são geradas a partir do `Enum` `ZipCodeUf` o mesmo para facilitar na criação de suas `interfaces` de programação.
