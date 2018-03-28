@@ -1,0 +1,8 @@
+language: csharp
+mono: none
+dotnet: 2.0.0
+solution: Canducci.Zip.sln
+install:
+  - dotnet restore Canducci.Zip/Canducci.Zip.csproj
+script:
+  - dotnet restore Canducci.Zip/Canducci.Zip.csproj
