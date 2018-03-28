@@ -1,0 +1,25 @@
+﻿<h2>Pesquisa pelo número do CEP</h2>
+<hr />
+<form class="form-inline">
+    <div class="form-group mb-2">
+        <label for="staticEmail2" class="sr-only">CEP:</label>
+        <input type="text" class="form-control" ng-model="zip" maxlength="8">
+    </div>
+    <div class="form-group mx-sm-3">
+        <button type="button" class="btn btn-primary mb-2" ng-click="find();">Busca</button>
+    </div>
+    <div class="form-group mx-sm-3">
+        <button type="button" class="btn btn-danger mb-2" ng-click="clear();">Limpar</button>
+    </div>
+</form>
+<hr />
+<div>
+    <div><code>CEP:</code> {{model.cep}}</div>
+    <div><code>Endereço:</code> {{model.logradouro}}</div>
+    <div><code>Bairro:</code> {{model.bairro}}</div>
+    <div><code>Cidade:</code> {{model.localidade}}</div>
+    <div><code>UF:</code> {{model.uf}}</div>
+    <div><code>IBGE:</code> {{model.ibge}}</div>
+    <div><code>Complemento:</code> {{model.complemento}}</div>
+    <div><code>Gia:</code> {{model.gia}}</div>    
+</div>
