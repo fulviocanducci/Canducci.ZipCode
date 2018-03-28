@@ -22,9 +22,21 @@ Para a busca de dados de um determinado número de **CEP** instancie a classe `Z
 ```csharp
 IZipCodeLoad zipCodeLoad = new ZipCodeLoad();
 ZipCodeResult result0 = zipCodeLoad.Find("19200000");
-if (result0)
+if (result0) // ou result0.IsValid
 {
-    ZipCodeItem zipCodeItem = result0;
+    ZipCodeItem zipCodeItem = result0; //ou zipCodeItem zipCodeItem = result0.Value;
 }
 ```
+
 ### Busca de uma lista de CEP
+
+
+```csharp
+IAddressCodeLoad addressCodeLoad = new AddressCodeLoad();
+AddressCode addressCode = AddressCode.Parse(ZipCodeUf.SP, "Presidente Prudente", "AVE");
+AddressCodeResult result1 = addressCodeLoad.Find(addressCode);
+if (result1) // ou result1.IsValid
+{
+    AddressCodeItem items = result1; // ou  AddressCodeItem items = result1.Value;
+}
+```
