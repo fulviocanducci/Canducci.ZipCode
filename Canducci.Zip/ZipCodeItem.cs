@@ -1,6 +1,6 @@
 ﻿namespace Canducci.Zip
 {
-    public sealed class ZipCodeItem
+    public class ZipCodeItem
     {
         [Newtonsoft.Json.JsonConstructor()]
         internal ZipCodeItem(string zip, 

@@ -3,6 +3,15 @@
   <PropertyGroup>
     <TargetFrameworks>net40;net45;net46;net47;netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;netstandard2.0;</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
+    <Version>2.0.0</Version>
+    <Authors>Canducci</Authors>
+    <Company />
+    <Product>Canducci ZipCode and AdressCode</Product>
+    <PackageIconUrl>https://6w6tag.bn1304.livefilestore.com/y4mfIUSRjndxz0Gi9liAONy94MJIAT5Fi_FBeeiT-TBjpBQV6SID2wt8PVRcaJ68sz4FxlbzfMJ_SynJEy5C_-iR_WAuNo7_sAFtiDCV7_ZrXH6LabC6yTWbZ0L7NSPvDO8tPjHNMdZcKL7q7UXl6q2F7437Tqks0aK7vPCTiVIviUdOIx8vfx9kS2-LRSElFP4Vg0CTftpqKEX-k0F_UOjC1C7TXVb777pX7YD-XCqyAk/if_Facebook_UI-08_2344308.png?psid=1</PackageIconUrl>
+    <RepositoryUrl>https://github.com/fulviocanducci/Canducci.ZipCode</RepositoryUrl>
+    <PackageTags>CEP</PackageTags>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

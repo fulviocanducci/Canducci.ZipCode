@@ -76,5 +76,17 @@ namespace Canducci.Zip.Test
             Assert.Fail();
         }
 
+        [TestMethod]
+        public async System.Threading.Tasks.Task TestInstanceAddressCodeLoadAndAdressCodeItemAndAddressCodeResult()
+        {
+            AddressCodeLoad addressCodeLoad = new AddressCodeLoad();
+            AddressCode addressCode = AddressCode.Parse(ZipCodeUf.SP, "São Paulo", "Avenida");
+            AddressCodeResult addressCodeResult = await addressCodeLoad.FindAsync(addressCode);
+            Assert.IsInstanceOfType(addressCodeLoad, typeof(AddressCodeLoad));
+            Assert.IsInstanceOfType(addressCode, typeof(AddressCode));
+            Assert.IsInstanceOfType(addressCodeResult, typeof(AddressCodeResult));
+            Assert.IsTrue(addressCodeResult.IsValid);
+        }
+
     }
 }
