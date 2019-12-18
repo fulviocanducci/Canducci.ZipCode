@@ -17,7 +17,7 @@
     <Description>Canducci ZipCode and AdressCode</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/fulviocanducci/Canducci.ZipCode</PackageProjectUrl>
-    <PackageIcon>if_Facebook_UI-08_2344308.png</PackageIcon>
+    <PackageIcon>base.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\if_Facebook_UI-08_2344308.png">
+    <None Include="..\images\base.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
