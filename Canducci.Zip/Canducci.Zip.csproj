@@ -7,7 +7,7 @@
     <Authors>Canducci</Authors>
     <Company />
     <Product>Canducci ZipCode and AdressCode</Product>
-    <PackageIconUrl>https://6w6tag.bn1304.livefilestore.com/y4mfIUSRjndxz0Gi9liAONy94MJIAT5Fi_FBeeiT-TBjpBQV6SID2wt8PVRcaJ68sz4FxlbzfMJ_SynJEy5C_-iR_WAuNo7_sAFtiDCV7_ZrXH6LabC6yTWbZ0L7NSPvDO8tPjHNMdZcKL7q7UXl6q2F7437Tqks0aK7vPCTiVIviUdOIx8vfx9kS2-LRSElFP4Vg0CTftpqKEX-k0F_UOjC1C7TXVb777pX7YD-XCqyAk/if_Facebook_UI-08_2344308.png?psid=1</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <RepositoryUrl>https://github.com/fulviocanducci/Canducci.ZipCode</RepositoryUrl>
     <PackageTags>CEP</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -17,10 +17,18 @@
     <Description>Canducci ZipCode and AdressCode</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/fulviocanducci/Canducci.ZipCode</PackageProjectUrl>
+    <PackageIcon>if_Facebook_UI-08_2344308.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\if_Facebook_UI-08_2344308.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

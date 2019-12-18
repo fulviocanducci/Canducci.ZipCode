@@ -5,16 +5,12 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canducci.Zip", "Canducci.Zip\Canducci.Zip.csproj", "{0A9DB7DC-2880-4683-9FA4-9690917ACE7D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canducci.Zip.WebSiteApiAngular", "Canducci.Zip.WebSiteApiAngular\Canducci.Zip.WebSiteApiAngular.csproj", "{D2110823-BD5B-4D50-B7FE-7FF5247AA626}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5C4393D3-531D-4383-A0C5-2E177A31AD9D}"
 	ProjectSection(SolutionItems) = preProject
 		.travis.yml = .travis.yml
 		methods.txt = methods.txt
 		README.md = README.md
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canducci.Zip.Mvc.Core", "Canducci.Zip.Mvc.Core\Canducci.Zip.Mvc.Core.csproj", "{CDC53B7C-874C-47A7-9D98-756378B2CF9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Canducci.Zip.MSTest", "Canducci.Zip.MSTest\Canducci.Zip.MSTest.csproj", "{F83FB0D4-FC0F-4E3A-9F20-F6EE7DAAA127}"
 EndProject
@@ -28,14 +24,6 @@ Global
 		{0A9DB7DC-2880-4683-9FA4-9690917ACE7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A9DB7DC-2880-4683-9FA4-9690917ACE7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A9DB7DC-2880-4683-9FA4-9690917ACE7D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2110823-BD5B-4D50-B7FE-7FF5247AA626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2110823-BD5B-4D50-B7FE-7FF5247AA626}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2110823-BD5B-4D50-B7FE-7FF5247AA626}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2110823-BD5B-4D50-B7FE-7FF5247AA626}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CDC53B7C-874C-47A7-9D98-756378B2CF9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CDC53B7C-874C-47A7-9D98-756378B2CF9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CDC53B7C-874C-47A7-9D98-756378B2CF9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CDC53B7C-874C-47A7-9D98-756378B2CF9A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F83FB0D4-FC0F-4E3A-9F20-F6EE7DAAA127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F83FB0D4-FC0F-4E3A-9F20-F6EE7DAAA127}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F83FB0D4-FC0F-4E3A-9F20-F6EE7DAAA127}.Release|Any CPU.ActiveCfg = Release|Any CPU
