@@ -1,50 +1,34 @@
 ﻿using System.Text.Json.Serialization;
 
 namespace Canducci.Zip
-{
+{   
    public class ZipCodeItem
-   {      
-      internal ZipCodeItem(string zip,
-          string address,
-          string district,
-          string city,
-          string uf,
-          int ibge,
-          string complement,
-          string gia)
-      {
-         Zip = zip;
-         Address = address;
-         District = district;
-         City = city;
-         Uf = uf;
-         Ibge = ibge;
-         Complement = complement;
-         Gia = gia;
-      }
-
+   {
       [JsonPropertyName("cep")]
-      public string Zip { get; }
+      public string Zip { get; set; }
 
       [JsonPropertyName("logradouro")]
-      public string Address { get; }
+      public string Address { get; set; }
 
       [JsonPropertyName("bairro")]
-      public string District { get; }
+      public string District { get; set; }
 
       [JsonPropertyName("localidade")]
-      public string City { get; }
+      public string City { get; set; }
 
       [JsonPropertyName("uf")]
-      public string Uf { get; }
+      public string Uf { get; set; }
 
       [JsonPropertyName("ibge")]
-      public int Ibge { get; }
+      public string Ibge { get; set; }
 
       [JsonPropertyName("complemento")]
-      public string Complement { get; }
+      public string Complement { get; set; }
 
       [JsonPropertyName("gia")]
-      public string Gia { get; }
+      public string Gia { get; set; }
+
+      [JsonPropertyName("unidade")]
+      public string Unity { get; set; }
    }
 }

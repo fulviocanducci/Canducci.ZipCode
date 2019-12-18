@@ -3,14 +3,8 @@
    public sealed class AddressCodeResult
    {
       public bool IsValid { get; }
-
       public AddressCodeItem Value { get; }
-
-      internal AddressCodeResult()
-      {
-
-      }
-
+      
       internal AddressCodeResult(AddressCodeItem value)
       {
          Value = value;

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
+[assembly: InternalsVisibleTo("Canducci.Zip.MSTest")]
 namespace Canducci.Zip.Internals
 {
    internal class Request : IDisposable

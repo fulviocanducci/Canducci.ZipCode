@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json;
 
 namespace Canducci.Zip.Internals
 {
@@ -6,7 +7,7 @@ namespace Canducci.Zip.Internals
    {
       internal T ConvertTo<T>(string json)
       {
-         return System.Text.Json.JsonSerializer.Deserialize<T>(json);
+         return JsonSerializer.Deserialize<T>(json);
       }
 
       public void Dispose()

@@ -1,12 +1,7 @@
 language: csharp
 mono: none
-dotnet: 2.0.0
+dotnet: 3.1.100
 solution: Canducci.Zip.sln
-install:
-  - dotnet restore Canducci.Zip.Mvc.Core/Canducci.Zip.Mvc.Core.csproj
-  - dotnet restore Canducci.Zip/Canducci.Zip.csproj
-  - dotnet restore Canducci.Zip.Test/Canducci.Zip.Test.csproj
-script:
-  - dotnet restore Canducci.Zip.Mvc.Core/Canducci.Zip.Mvc.Core.csproj
-  - dotnet restore Canducci.Zip/Canducci.Zip.csproj
-  - dotnet restore Canducci.Zip.Test/Canducci.Zip.Test.csproj
+script:    
+  - dotnet restore
+  - dotnet test -c Release -f netcoreapp3.1

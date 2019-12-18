@@ -26,7 +26,7 @@ namespace Canducci.Zip
       private ZipCodeResult GetConvertResult(string json)
       {
          ZipCodeItem value = Deserialize.ConvertTo<ZipCodeItem>(json);
-         return new ZipCodeResult(true, value);
+         return new ZipCodeResult(value);
       }
 
       public ZipCodeResult Find(ZipCode value)
