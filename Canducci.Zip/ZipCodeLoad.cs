@@ -1,56 +1,68 @@
-﻿namespace Canducci.Zip
+﻿using Canducci.Zip.Exceptions;
+using Canducci.Zip.Interfaces;
+using Canducci.Zip.Internals;
+using System;
+using System.Threading.Tasks;
+
+namespace Canducci.Zip
 {
-    /// <summary>
-    /// ZipCodeLoad class
-    /// </summary>
-    public class ZipCodeLoad : IZipCodeLoad
-    {
-        internal Internals.ZipCodeConvert Convert;
-        internal Internals.ZipCodeRequest Request;
+   public class ZipCodeLoad : IZipCodeLoad
+   {
+      internal readonly Deserialize Deserialize;
+      internal readonly Request Request;
+      internal const string Url = "http://viacep.com.br/ws/{0}/json/";
 
-        public ZipCodeLoad()
-        {
-            Convert = Internals.ZipCodeConvert.Create();
-            Request = Internals.ZipCodeRequest.Create();
-        }
+      public ZipCodeLoad()
+      {
+         Deserialize = new Deserialize();
+         Request = new Request();
+      }
 
-        private ZipCodeResult GetZipCodeResult(string json)
-        {
-            Validations.ZipCodeItemValid valid = Convert.ConvertZipCodeItemValid(json);
-            if (valid.Erro)
-            {
-                return new ZipCodeResult(false);
-            }
-            return new ZipCodeResult(true, Convert.ConvertZipCodeItem(json));
-        }
+      private Uri GetCreateUrl(ZipCode zipCode)
+      {
+         return new Uri(string.Format(Url, zipCode.Value));
+      }
 
-#if NET40
-        /// <summary>
-        /// Find
-        /// </summary>
-        /// <param name="value">ZipCode class</param>
-        /// <returns>ZipCodeResult class</returns>
-        public ZipCodeResult Find(ZipCode value)
-        {            
-            string json = Request.GetJsonString(value);
-            return GetZipCodeResult(json);
-        }
-#else
-        /// <summary>
-        /// FindAsync
-        /// </summary>
-        /// <param name="value">ZipCode class</param>
-        /// <returns>ZipCodeResult class</returns>
-        public async System.Threading.Tasks.Task<ZipCodeResult> FindAsync(ZipCode value)
-        {
-            string json = await Request.GetJsonStringAsync(value);
-            return GetZipCodeResult(json);
-        }
-#endif
-        public void Dispose()
-        {
-            Convert?.Dispose();
-            Request?.Dispose();
-        }
-    }
+      private ZipCodeResult GetConvertResult(string json)
+      {
+         ZipCodeItem value = Deserialize.ConvertTo<ZipCodeItem>(json);
+         return new ZipCodeResult(true, value);
+      }
+
+      public ZipCodeResult Find(ZipCode value)
+      {
+         string json = Request.GetString(GetCreateUrl(value));
+         return GetConvertResult(json);
+      }
+
+      public ZipCodeResult Find(string value)
+      {
+         if (ZipCode.TryParse(value, out ZipCode zipCode))
+         {
+            return Find(zipCode);
+         }
+         throw new ZipCodeException();
+      }
+
+      public async Task<ZipCodeResult> FindAsync(ZipCode value)
+      {
+         string json = await Request.GetStringAsync(GetCreateUrl(value));
+         return GetConvertResult(json);
+      }
+
+      public async Task<ZipCodeResult> FindAsync(string value)
+      {
+         if (ZipCode.TryParse(value, out ZipCode zipCode))
+         {
+            return await FindAsync(zipCode);
+         }
+         throw new ZipCodeException();
+      }
+
+      public void Dispose()
+      {
+         Deserialize?.Dispose();
+         Request?.Dispose();
+      }
+   }
 }

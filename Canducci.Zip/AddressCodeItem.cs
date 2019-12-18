@@ -1,9 +1,9 @@
-﻿namespace Canducci.Zip
-{
-    [Newtonsoft.Json.JsonArray(AllowNullItems = true)]
-    public class AddressCodeItem : System.Collections.Generic.List<ZipCodeItem>
+﻿using System.Collections.Generic;
+
+namespace Canducci.Zip
+{    
+    public class AddressCodeItem : List<ZipCodeItem>
     {
-        public static implicit operator AddressCodeItem(AddressCodeResult v) 
-            => v.Value;        
+        public static implicit operator AddressCodeItem(AddressCodeResult v) => v.Value;        
     }
 }

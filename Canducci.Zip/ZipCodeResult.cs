@@ -4,6 +4,7 @@
     {
         public bool IsValid { get; }
         public ZipCodeItem Value { get; }
+
         internal ZipCodeResult(bool isValid)
             : this(isValid, null)
         {

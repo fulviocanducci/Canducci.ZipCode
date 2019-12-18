@@ -1,8 +1,10 @@
-﻿namespace Canducci.Zip.Validations
+﻿using System.Text.Json.Serialization;
+
+namespace Canducci.Zip.Validations
 {
     internal class ZipCodeItemValid
     {
-        [Newtonsoft.Json.JsonProperty("erro")]
+        [JsonPropertyName("erro")]
         public bool Erro { get; set; }
     }
 }

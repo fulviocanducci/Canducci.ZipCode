@@ -1,6 +1,8 @@
-﻿namespace Canducci.Zip
+﻿using System;
+
+namespace Canducci.Zip
 {
-    [System.Flags()]
+    [Flags()]
     public enum ZipCodeUf
     {
         AC,

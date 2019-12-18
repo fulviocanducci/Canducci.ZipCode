@@ -1,0 +1,54 @@
+using System;
+using System.IO;
+using System.Net;
+using System.Threading.Tasks;
+
+namespace Canducci.Zip.Internals
+{
+   internal class Request : IDisposable
+   {
+      public Request()
+      {
+
+      }
+
+#if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471 || NET48 || NETSTANDARD2_0 || NETSTANDARD2_1
+      public string GetString(Uri url)
+      {
+         string response = string.Empty;
+         WebRequest webRequest = WebRequest.Create(url);
+         WebResponse webResponse = webRequest.GetResponse();
+         Stream stream = webResponse.GetResponseStream();
+         using (StreamReader reader = new StreamReader(stream))
+         {
+            response = reader.ReadToEnd();
+         }
+#if NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471 || NET48 || NETSTANDARD2_0 || NETSTANDARD2_1
+         webResponse.Dispose();
+#endif
+         stream.Dispose();
+         stream = null;
+         webRequest = null;
+         return response;
+      }
+#endif
+#if NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471 || NET48 || NETSTANDARD2_0 || NETSTANDARD2_1
+      public async Task<string> GetStringAsync(Uri url)
+      {
+         string response = string.Empty;
+         WebRequest webRequest = WebRequest.Create(url);
+         WebResponse webResponse = await webRequest.GetResponseAsync();
+         Stream stream = webResponse.GetResponseStream();
+         using (StreamReader reader = new StreamReader(stream))
+         {
+            response = await reader.ReadToEndAsync();
+         }
+         return response;
+      }
+#endif
+      public void Dispose()
+      {
+         GC.SuppressFinalize(this);
+      }
+   }
+}

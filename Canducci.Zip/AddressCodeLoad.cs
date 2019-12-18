@@ -1,74 +1,66 @@
-﻿namespace Canducci.Zip
+﻿using Canducci.Zip.Interfaces;
+using Canducci.Zip.Internals;
+using Canducci.Zip.Exceptions;
+using System;
+using System.Threading.Tasks;
+namespace Canducci.Zip
 {
-    /// <summary>
-    /// AddressCodeLoad Class
-    /// </summary>
-    public sealed class AddressCodeLoad : IAddressCodeLoad
-    {
-        internal Internals.ZipCodeConvert Convert;
-        internal Internals.ZipCodeRequest Request;
+   public sealed class AddressCodeLoad : IAddressCodeLoad
+   {
+      internal readonly Deserialize Deserialize;
+      internal readonly Request Request;
+      internal const string Url = "http://viacep.com.br/ws/{0}/{1}/{2}/json/";
+      public AddressCodeLoad()
+      {
+         Deserialize = new Deserialize();
+         Request = new Request();
+      }
 
-        public AddressCodeLoad()
-        {
-            Convert = Internals.ZipCodeConvert.Create(); 
-            Request = Internals.ZipCodeRequest.Create();
-        }
+      private Uri GetCreateUrl(AddressCode value)
+      {
+         return new Uri(string.Format(Url, value.Uf.ToString(), value.City, value.Address));
+      }
 
-        private AddressCodeResult GetAddressCodeResult(string json)
-        {
-            AddressCodeItem values = Convert.ConvertZipCodeItems(json);
-            return new AddressCodeResult(values);
-        }
+      private AddressCodeResult GetConvertResult(string json)
+      {
+         AddressCodeItem values = Deserialize.ConvertTo<AddressCodeItem>(json);
+         return new AddressCodeResult(values);
+      }
 
-#if NET40
-        /// <summary>
-        /// Find
-        /// </summary>
-        /// <param name="value">AddressCode class</param>
-        /// <returns>AddressCodeResult class</returns>
-        public AddressCodeResult Find(AddressCode value)
-        {
-            string json = Request.GetJsonString(value.Uf.ToString(), value.City, value.Address);
-            return GetAddressCodeResult(json);
-        }
-        /// <summary>
-        /// Find
-        /// </summary>
-        /// <param name="uf">ZipCodeUf enum</param>
-        /// <param name="city">string</param>
-        /// <param name="address">string</param>
-        /// <returns>AddressCodeResult class</returns>
-        public AddressCodeResult Find(ZipCodeUf uf, string city, string address)
-        {
-            return Find(AddressCode.Parse(uf, city, address));
-        }
-#else
-        /// <summary>
-        /// FindAsync
-        /// </summary>
-        /// <param name="value">AddressCode class</param>
-        /// <returns>AddressCodeResult</returns>
-        public async System.Threading.Tasks.Task<AddressCodeResult> FindAsync(AddressCode value)
-        {
-            string json = await Request.GetJsonStringAsync(value.Uf.ToString(), value.City, value.Address);
-            return GetAddressCodeResult(json);
-        }
-        /// <summary>
-        /// FindAsync
-        /// </summary>
-        /// <param name="uf">ZipCodeUf enum</param>
-        /// <param name="city">string</param>
-        /// <param name="address">string</param>
-        /// <returns>AddressCodeResult class</returns>
-        public async System.Threading.Tasks.Task<AddressCodeResult> FindAsync(ZipCodeUf uf, string city, string address)
-        {
-            return await FindAsync(AddressCode.Parse(uf, city, address));
-        }
-#endif
-        public void Dispose()
-        {
-            Convert?.Dispose();
-            Request?.Dispose();
-        }
-    }
+      public AddressCodeResult Find(AddressCode value)
+      {
+         string json = Request.GetString(GetCreateUrl(value));
+         return GetConvertResult(json);
+      }
+
+      public AddressCodeResult Find(ZipCodeUf uf, string city, string address)
+      {
+         if (AddressCode.TryParse(uf, city, address, out AddressCode addressCode))
+         {
+            return Find(addressCode);
+         }
+         throw new AddressCodeException();
+      }
+
+      public async Task<AddressCodeResult> FindAsync(AddressCode value)
+      {
+         string json = await Request.GetStringAsync(GetCreateUrl(value));
+         return GetConvertResult(json);
+      }
+
+      public async Task<AddressCodeResult> FindAsync(ZipCodeUf uf, string city, string address)
+      {
+         if (AddressCode.TryParse(uf, city, address, out AddressCode addressCode))
+         {
+            return await FindAsync(addressCode);
+         }
+         throw new AddressCodeException();
+      }
+
+      public void Dispose()
+      {
+         Deserialize?.Dispose();
+         Request?.Dispose();
+      }
+   }
 }

@@ -1,21 +1,22 @@
 ﻿namespace Canducci.Zip
 {
-    public sealed class AddressCodeResult
-    {
-        public bool IsValid { get; }
-        public AddressCodeItem Value { get; }
+   public sealed class AddressCodeResult
+   {
+      public bool IsValid { get; }
 
-        internal AddressCodeResult()
-        {
-        }
+      public AddressCodeItem Value { get; }
 
-        internal AddressCodeResult(AddressCodeItem value)
-        {
-            Value = value;
-            IsValid = (value?.Count > 0);
-        }
+      internal AddressCodeResult()
+      {
 
-        public static implicit operator bool(AddressCodeResult v)
-            => v.IsValid;
-    }
+      }
+
+      internal AddressCodeResult(AddressCodeItem value)
+      {
+         Value = value;
+         IsValid = value?.Count > 0;
+      }
+
+      public static implicit operator bool(AddressCodeResult v) => v.IsValid;
+   }
 }
