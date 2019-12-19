@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>    
+    <TargetFrameworks>netstandard2.0;netstandard2.1;netcoreapp3.1</TargetFrameworks>    
+    <Version>3.0.0</Version>    
+    <PackageProjectUrl>https://github.com/fulviocanducci/Canducci.ZipCode</PackageProjectUrl>    
+    <RepositoryUrl>https://github.com/fulviocanducci/Canducci.ZipCode</RepositoryUrl>    
+    <PackageIcon>base.png</PackageIcon>    
+    <PackageIconUrl />    
+    <Authors>Canducci</Authors>    
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>    
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>    
+    <PackageTags>MVC ZipCode AddressCode - Cep Brasil</PackageTags>    
+    <RepositoryType>Git</RepositoryType>
+  </PropertyGroup>  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
+  </ItemGroup>  
+  <ItemGroup>
+    <ProjectReference Include="..\Canducci.Zip\Canducci.Zip.csproj" />
+  </ItemGroup>  
+  <ItemGroup>
+    <None Include="..\images\base.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
