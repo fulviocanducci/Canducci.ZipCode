@@ -1,4 +1,6 @@
 ﻿using Canducci.Zip.Interfaces;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Canducci.Zip
@@ -9,8 +11,8 @@ namespace Canducci.Zip
 
       static Extensions()
       {
-         System.Array items = System.Enum.GetValues(typeof(ZipCodeUf));
-         System.Collections.IEnumerator list = items.GetEnumerator();
+         Array items = System.Enum.GetValues(typeof(ZipCodeUf));
+         IEnumerator list = items.GetEnumerator();
          while (list.MoveNext())
          {
             string item = list.Current.ToString();

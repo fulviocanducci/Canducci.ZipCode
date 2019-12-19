@@ -17,7 +17,7 @@ PM> Install-Package Canducci.Zip
 
 ### Busca de CEP
 
-Para a busca de dados de um determinado número de **CEP** instancie a classe `ZipCodeLoad` e no seu método `Find` ou (`FindAsync` a partir do `NET 4.5`) passe o número e se a resposta estiver satisfatória os dados estão na classe de resultado `ZipCodeResult`, ***exemplo***:
+Para a busca de dados de um determinado número de **CEP** instancie a classe `ZipCodeLoad` e no seu método `Find` ou `FindAsync` passe o número e se a resposta estiver satisfatória os dados estão na classe de resultado `ZipCodeResult`, ***exemplo***:
 
 ```csharp
 IZipCodeLoad zipCodeLoad = new ZipCodeLoad();
@@ -39,6 +39,7 @@ ZipCodeItem.Uf         // uf
 ZipCodeItem.Ibge       // Ibge
 ZipCodeItem.Complement // complemento
 ZipCodeItem.Gia        // gia
+ZipCodeItem.Unity      // unidade
 ```
 
 ### Busca de uma lista de CEP
