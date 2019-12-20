@@ -12,12 +12,12 @@ namespace Canducci.Zip
          Value = value;
       }
 
+      internal static Regex RegexZip = new Regex(@"^\d{8}$");
       internal static bool Valid(ref string value)
       {
          if (value.Length == 8 || value.Length == 9 || value.Length == 10)
          {
-            value = value.Replace(".", "").Replace("-", "");
-            Regex RegexZip = new Regex(@"^\d{8}$");
+            value = value.Replace(".", "").Replace("-", "");            
             return RegexZip.IsMatch(value);
          }
          return false;
@@ -42,7 +42,6 @@ namespace Canducci.Zip
          zipCode = null;
          return false;
       }
-
 
       public static implicit operator string(ZipCode zipCode) => zipCode.Value;
 

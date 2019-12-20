@@ -67,3 +67,38 @@ System.Collections.Generic.IDictionary<string, string> items0_List = zipCodeLoad
 System.Collections.Generic.IDictionary<string, string> items1_List = addressCodeLoad.UFToList();
 ```
 Essas duas variaveis (`items0_List` e `items1_List`) são da mesma instância e são geradas a partir do `Enum` `ZipCodeUf` o mesmo para facilitar na criação de suas `interfaces` de programação.
+
+### Aplicação MVC Core
+
+No exemplo do `controller` `TestController` tem dois métodos:
+
+```c#
+[HttpPost]
+public async Task<IActionResult> Index([FromBody] ZipCodeData data)
+{
+ if (ModelState.IsValid)
+ {
+	if (ZipCode.TryParse(data.Value, out ZipCode zipCode))
+	{
+	   ZipCodeResult zipCodeResult = await ZipCodeLoad.FindAsync(zipCode);
+	   return Json(zipCodeResult);
+	}
+ }
+ return Json(new { IsValid = false });
+}
+
+[HttpPost]
+public async Task<IActionResult> Address([FromBody] AddressCodeData data)
+{
+ if (AddressCode.TryParse(ParseZipCodeUf(data.Uf), data.City, data.Address, out AddressCode addressCode))
+ {
+	AddressCodeResult addressCodeResult = await AddressCodeLoad.FindAsync(addressCode);
+	return Json(addressCodeResult);
+ }
+ return Json(new { IsValid = false });
+}
+
+private ZipCodeUf ParseZipCodeUf(string uf) => Enum.Parse<ZipCodeUf>(uf);
+```
+
+com o código que retornar um `json` para `Front-End` de como utilizar o pacote [Canducci.Zip](https://www.nuget.org/packages/Canducci.Zip/) e [nesse link todo o projeto exemplo](https://github.com/fulviocanducci/Canducci.ZipCode/tree/master/WebAppTest).
