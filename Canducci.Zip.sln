@@ -10,13 +10,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.travis.yml = .travis.yml
 		methods.txt = methods.txt
 		README.md = README.md
+		SECURITY.md = SECURITY.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canducci.Zip.MSTest", "Canducci.Zip.MSTest\Canducci.Zip.MSTest.csproj", "{F83FB0D4-FC0F-4E3A-9F20-F6EE7DAAA127}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Canducci.Zip.Mvc", "Canducci.Zip.Mvc\Canducci.Zip.Mvc.csproj", "{AE8AAEC1-8BCD-4871-82CB-BDD6C12819EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canducci.Zip.Mvc", "Canducci.Zip.Mvc\Canducci.Zip.Mvc.csproj", "{AE8AAEC1-8BCD-4871-82CB-BDD6C12819EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppTest", "WebAppTest\WebAppTest.csproj", "{D2861D45-421F-4AFE-B1D3-6A0CEEF80E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppTest", "WebAppTest\WebAppTest.csproj", "{D2861D45-421F-4AFE-B1D3-6A0CEEF80E96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
