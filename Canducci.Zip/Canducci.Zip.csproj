@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net47;net48;netstandard2.0;netstandard2.1;netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>    
-    <Version>3.0.0</Version>
+    <Version>3.1.0</Version>
     <Authors>Canducci</Authors>
     <Company />
     <Product>Canducci ZipCode and AdressCode</Product>
@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/fulviocanducci/Canducci.ZipCode</RepositoryUrl>
     <PackageTags>CEP</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <AssemblyVersion>3.1.0.0</AssemblyVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryType>Git</RepositoryType>
     <Description>Canducci ZipCode and AdressCode</Description>

@@ -39,7 +39,8 @@ ZipCodeItem.Uf         // uf
 ZipCodeItem.Ibge       // Ibge
 ZipCodeItem.Complement // complemento
 ZipCodeItem.Gia        // gia
-ZipCodeItem.Unity      // unidade
+ZipCodeItem.Siafi      // siafi
+ZipCodeItem.Ddd        // ddd
 ```
 
 ### Busca de uma lista de CEP

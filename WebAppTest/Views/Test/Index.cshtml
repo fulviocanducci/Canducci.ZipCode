@@ -16,7 +16,7 @@
       <div class="row mt-3">
         <div class="col-4">
           <div class="form-group">
-            <input type="text" class="form-control" v-model="cep" name="cep" id="cep" placeholder="xxxxx-xxx">
+            <input type="text" maxlength="8" class="form-control" v-model="cep" name="cep" id="cep" placeholder="xxxxx-xxx">
           </div>
         </div>
         <div class="col-2">
@@ -59,9 +59,13 @@
               <p class="font-italic text-muted"><small>gia</small></p>
               {{zip.gia}}
             </li>
-            <li class="list-group-item" v-if="zip.unidade">
-              <p class="font-italic text-muted"><small>unidade</small></p>
-              {{zip.unidade}}
+            <li class="list-group-item" v-if="zip.siafi">
+              <p class="font-italic text-muted"><small>siafi</small></p>
+              {{zip.siafi}}
+            </li>
+            <li class="list-group-item" v-if="zip.ddd">
+              <p class="font-italic text-muted"><small>ddd</small></p>
+              {{zip.ddd}}
             </li>
           </ul>
         </div>
@@ -179,14 +183,27 @@
               <p class="card-text">
                 <div class="text-muted">
                   <small>
-                    unidade
+                    siafi
                   </small>
                 </div>
-                <span v-if="zip.unidade">
-                  {{zip.unidade}}
+                <span v-if="zip.siafi">
+                  {{zip.siafi}}
                 </span>
-                <span v-if="!zip.unidade" class="text-danger">
+                <span v-if="!zip.siafi" class="text-danger">
                   sem unidade
+                </span>
+              </p>
+              <p class="card-text">
+                <div class="text-muted">
+                  <small>
+                    ddd
+                  </small>
+                </div>
+                <span v-if="zip.ddd">
+                  {{zip.ddd}}
+                </span>
+                <span v-if="!zip.ddd" class="text-danger">
+                  sem ddd
                 </span>
               </p>
             </div>
@@ -213,7 +230,8 @@
         ibge: "",
         complemento: "",
         gia: "",
-        unidade: ""
+        siafi: "",
+        ddd: ""
       },
       zips: [
       ],
@@ -230,7 +248,8 @@
           ibge: "",
           complemento: "",
           gia: "",
-          unidade: ""
+          siafi: "",
+          ddd: ""
         }
       },
       initZips: function () {
@@ -265,7 +284,6 @@
         const result = await source.json();
         if (result.isValid) {
           this.zips = result.value;
-          console.log(this.zips);
         }
         this.status = false;
       }
