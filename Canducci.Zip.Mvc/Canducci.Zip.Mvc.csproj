@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>    
     <TargetFrameworks>netstandard2.0;netstandard2.1;netcoreapp3.1</TargetFrameworks>    
-    <Version>3.1.0</Version>    
+    <Version>3.1.0.1</Version>    
     <PackageProjectUrl>https://github.com/fulviocanducci/Canducci.ZipCode</PackageProjectUrl>    
     <RepositoryUrl>https://github.com/fulviocanducci/Canducci.ZipCode</RepositoryUrl>    
     <PackageIcon>base.png</PackageIcon>    

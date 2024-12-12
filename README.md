@@ -4,7 +4,6 @@
 
 [![Version](https://img.shields.io/nuget/v/Canducci.Zip.svg?style=plastic&label=version)](https://www.nuget.org/packages/Canducci.Zip/)
 [![NuGet](https://img.shields.io/nuget/dt/Canducci.Zip.svg)](https://www.nuget.org/packages/Canducci.Zip/)
-[![Build Status](https://travis-ci.org/fulviocanducci/Canducci.ZipCode.svg?branch=master)](https://travis-ci.org/fulviocanducci/Canducci.ZipCode)
 ![Github Workflows](https://github.com/fulviocanducci/Canducci.ZipCode/workflows/.NET%20Core/badge.svg)
 ## Instalação do Pacote
 
@@ -41,6 +40,9 @@ ZipCodeItem.Complement // complemento
 ZipCodeItem.Gia        // gia
 ZipCodeItem.Siafi      // siafi
 ZipCodeItem.Ddd        // ddd
+ZipCodeItem.Unity      // unidade
+ZipCodeItem.State      // estado
+ZipCodeItem.Region     // região
 ```
 
 ### Busca de uma lista de CEP
