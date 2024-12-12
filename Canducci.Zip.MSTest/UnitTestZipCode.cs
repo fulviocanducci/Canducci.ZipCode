@@ -9,18 +9,18 @@ namespace Canducci.Zip.MSTest
       [TestMethod]
       public void TestZipCodeParse()
       {
-         ZipCode zipCode = ZipCode.Parse("19200000");
+         ZipCode zipCode = ZipCode.Parse("19206082");
          Assert.IsInstanceOfType(zipCode.GetType(), typeof(ZipCode).GetType());
-         Assert.AreEqual(zipCode.Value, "19200000");
+         Assert.AreEqual(zipCode.Value, "19206082");
       }
 
       [TestMethod]
       public void TestZipCodeTryParse()
       {
-         if (ZipCode.TryParse("19200000", out ZipCode zipCode))
+         if (ZipCode.TryParse("19206082", out ZipCode zipCode))
          {
             Assert.IsInstanceOfType(zipCode.GetType(), typeof(ZipCode).GetType());
-            Assert.AreEqual(zipCode.Value, "19200000");
+            Assert.AreEqual(zipCode.Value, "19206082");
          }
       }
 

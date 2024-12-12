@@ -7,7 +7,7 @@ namespace Canducci.Zip
    {
       public string Value { get; private set; }
 
-      internal ZipCode(string value) 
+      internal ZipCode(string value)
       {
          Value = value;
       }
@@ -17,7 +17,7 @@ namespace Canducci.Zip
       {
          if (value.Length == 8 || value.Length == 9 || value.Length == 10)
          {
-            value = value.Replace(".", "").Replace("-", "");            
+            value = value.Replace(".", "").Replace("-", "");
             return RegexZip.IsMatch(value);
          }
          return false;

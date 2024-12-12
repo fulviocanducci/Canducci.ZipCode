@@ -18,8 +18,8 @@ namespace Canducci.Zip.MSTest
       [TestMethod]
       public void TestZipCodeLoadFind()
       {
-         ZipCodeResult zipCodeResult0 = ZipCodeLoad.Find("19200000");
-         ZipCodeResult zipCodeResult1 = ZipCodeLoad.Find(ZipCode.Parse("19200000"));
+         ZipCodeResult zipCodeResult0 = ZipCodeLoad.Find("19206082");
+         ZipCodeResult zipCodeResult1 = ZipCodeLoad.Find(ZipCode.Parse("19206082"));
 
          Assert.IsTrue(zipCodeResult0.IsValid);
          Assert.IsTrue(zipCodeResult1.IsValid);
@@ -31,8 +31,8 @@ namespace Canducci.Zip.MSTest
       [TestMethod]
       public async Task TestZipCodeLoadFindAsync()
       {
-         ZipCodeResult zipCodeResult0 = await ZipCodeLoad.FindAsync("19200000");
-         ZipCodeResult zipCodeResult1 = await ZipCodeLoad.FindAsync(ZipCode.Parse("19200000"));
+         ZipCodeResult zipCodeResult0 = await ZipCodeLoad.FindAsync("19206082");
+         ZipCodeResult zipCodeResult1 = await ZipCodeLoad.FindAsync(ZipCode.Parse("19206082"));
 
          Assert.IsTrue(zipCodeResult0.IsValid);
          Assert.IsTrue(zipCodeResult1.IsValid);
