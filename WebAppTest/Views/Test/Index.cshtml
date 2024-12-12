@@ -1,293 +1,350 @@
 ﻿@{
-  ViewData["Title"] = "Busca de CEP";
+   ViewData["Title"] = "Busca de CEP";
 }
 <h3><small>Pesquisas</small></h3>
 <div id="app">
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pesquisa por CEP</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Pesquisa por Endereço</a>
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <div class="row mt-3">
-        <div class="col-4">
-          <div class="form-group">
-            <input type="text" maxlength="8" class="form-control" v-model="cep" name="cep" id="cep" placeholder="xxxxx-xxx">
-          </div>
-        </div>
-        <div class="col-2">
-          <button type="button" class="btn btn-primary mb-2" v-on:click="findAsync">Busca</button>
-        </div>
-      </div>
-      <div class="row mt-1">
-        <div class="col-4">
-          <div class="d-flex justify-content-center">
-            <div class="spinner-border text-primary" role="status" v-if="status">
-              <span class="sr-only">Loading...</span>
+   <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pesquisa por CEP</a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Pesquisa por Endereço</a>
+      </li>
+   </ul>
+   <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+         <div class="row mt-3">
+            <div class="col-4">
+               <div class="form-group">
+                  <input type="text" maxlength="8" class="form-control" v-model="cep" name="cep" id="cep" placeholder="xxxxx-xxx">
+               </div>
             </div>
-          </div>
-          <ul class="list-group">
-            <li class="list-group-item" v-if="zip.cep">
-              <p class="font-italic text-muted"><small>cep</small></p>
-              {{zip.cep}}
-            </li>
-            <li class="list-group-item" v-if="zip.localidade">
-              <p class="font-italic text-muted"><small>cidade / uf</small></p>
-              {{zip.localidade}} / {{zip.uf}}
-            </li>
-            <li class="list-group-item" v-if="zip.bairro">
-              <p class="font-italic text-muted"><small>bairro</small></p>
-              {{zip.bairro}}
-            </li>
-            <li class="list-group-item" v-if="zip.logradouro">
-              <p class="font-italic text-muted"><small>endereço</small></p>
-              {{zip.logradouro}}
-            </li>
-            <li class="list-group-item" v-if="zip.ibge">
-              <p class="font-italic text-muted"><small>ibge</small></p>
-              {{zip.ibge}}
-            </li>
-            <li class="list-group-item" v-if="zip.complemento">
-              <p class="font-italic text-muted"><small>complemento</small></p>
-              {{zip.complemento}}
-            </li>
-            <li class="list-group-item" v-if="zip.gia">
-              <p class="font-italic text-muted"><small>gia</small></p>
-              {{zip.gia}}
-            </li>
-            <li class="list-group-item" v-if="zip.siafi">
-              <p class="font-italic text-muted"><small>siafi</small></p>
-              {{zip.siafi}}
-            </li>
-            <li class="list-group-item" v-if="zip.ddd">
-              <p class="font-italic text-muted"><small>ddd</small></p>
-              {{zip.ddd}}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="row mt-3">
-        <div class="col-2">
-          <div class="form-group">
-            <select v-model="uf" class="form-control">
-              @foreach (KeyValuePair<string, string> dic in ViewBag.Ufs as Dictionary<string, string>)
-              {
-                <option value="@dic.Key">@dic.Key</option>
-              }
-            </select>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="form-group">
-            <input type="text" class="form-control" v-model="city" name="city" id="city" placeholder="Cidade">
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="form-group">
-            <input type="text" class="form-control" v-model="address" name="address" id="address" placeholder="Endereço">
-          </div>
-        </div>
-        <div class="col-2">
-          <button type="button" class="btn btn-primary mb-2" v-on:click="findAddressAsync">Busca</button>
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-12 d-flex justify-content-center">
-          <div class="spinner-border text-primary" role="status" v-if="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-        <div class="col-12" v-if="!status">
-          <small>Quantidade: {{zips.length}}</small>
-        </div>
-        <div class="col-6 mt-2" v-for="zip in zips">
-          <div class="card">
-            <div class="card-header">
-              <small>cep: </small><em>{{zip.cep}}</em>
+            <div class="col-2">
+               <button type="button" class="btn btn-primary mb-2" v-on:click="findAsync">Busca</button>
             </div>
-            <div class="card-body">
-              <p class="card-text">
-                <div class="text-muted">
-                  <small v-if="zip.bairro">
-                    cidade / uf / bairro
-                  </small>
-                  <small v-if="!zip.bairro">
-                    cidade / uf
-                  </small>
-                </div>
-                <span v-if="zip.bairro">
-                  {{zip.localidade}} / {{zip.uf}} / {{zip.bairro}}
-                </span>
-                <span v-if="!zip.bairro">
-                  {{zip.localidade}} / {{zip.uf}}
-                </span>
-              </p>
-              <p class="card-text">
-                <div class="text-muted">
-                  <small>
-                    endereço
-                  </small>
-                </div>
-                <span v-if="zip.logradouro">
-                  {{zip.logradouro}}
-                </span>
-                <span v-if="!zip.logradouro" class="text-danger">
-                  sem endereço
-                </span>
-              </p>
-              <p class="card-text">
-                <div class="text-muted">
-                  <small>
-                    ibge
-                  </small>
-                </div>
-                <span v-if="zip.ibge">
-                  {{zip.ibge}}
-                </span>
-                <span v-if="!zip.ibge" class="text-danger">
-                  sem ibge
-                </span>
-              </p>
-              <p class="card-text">
-                <div class="text-muted">
-                  <small>
-                    complemento
-                  </small>
-                </div>
-                <span v-if="zip.complemento">
-                  {{zip.complemento}}
-                </span>
-                <span v-if="!zip.complemento" class="text-danger">
-                  sem complemento
-                </span>
-              </p>
-              <p class="card-text">
-                <div class="text-muted">
-                  <small>
-                    gia
-                  </small>
-                </div>
-                <span v-if="zip.gia">
-                  {{zip.gia}}
-                </span>
-                <span v-if="!zip.gia" class="text-danger">
-                  sem guia
-                </span>
-              </p>
-              <p class="card-text">
-                <div class="text-muted">
-                  <small>
-                    siafi
-                  </small>
-                </div>
-                <span v-if="zip.siafi">
-                  {{zip.siafi}}
-                </span>
-                <span v-if="!zip.siafi" class="text-danger">
-                  sem unidade
-                </span>
-              </p>
-              <p class="card-text">
-                <div class="text-muted">
-                  <small>
-                    ddd
-                  </small>
-                </div>
-                <span v-if="zip.ddd">
-                  {{zip.ddd}}
-                </span>
-                <span v-if="!zip.ddd" class="text-danger">
-                  sem ddd
-                </span>
-              </p>
+         </div>
+         <div class="row mt-1">
+            <div class="col-4">
+               <div class="d-flex justify-content-center">
+                  <div class="spinner-border text-primary" role="status" v-if="status">
+                     <span class="sr-only">Loading...</span>
+                  </div>
+               </div>
+               <ul class="list-group">
+                  <li class="list-group-item" v-if="zip.cep">
+                     <p class="font-italic text-muted"><small>cep</small></p>
+                     {{zip.cep}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.localidade">
+                     <p class="font-italic text-muted"><small>cidade / uf</small></p>
+                     {{zip.localidade}} / {{zip.uf}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.bairro">
+                     <p class="font-italic text-muted"><small>bairro</small></p>
+                     {{zip.bairro}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.logradouro">
+                     <p class="font-italic text-muted"><small>endereço</small></p>
+                     {{zip.logradouro}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.ibge">
+                     <p class="font-italic text-muted"><small>ibge</small></p>
+                     {{zip.ibge}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.complemento">
+                     <p class="font-italic text-muted"><small>complemento</small></p>
+                     {{zip.complemento}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.gia">
+                     <p class="font-italic text-muted"><small>gia</small></p>
+                     {{zip.gia}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.siafi">
+                     <p class="font-italic text-muted"><small>siafi</small></p>
+                     {{zip.siafi}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.ddd">
+                     <p class="font-italic text-muted"><small>ddd</small></p>
+                     {{zip.ddd}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.unidade">
+                     <p class="font-italic text-muted"><small>Unidade</small></p>
+                     {{zip.unidade}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.estado">
+                     <p class="font-italic text-muted"><small>Estado</small></p>
+                     {{zip.estado}}
+                  </li>
+                  <li class="list-group-item" v-if="zip.regiao">
+                     <p class="font-italic text-muted"><small>Região</small></p>
+                     {{zip.regiao}}
+                  </li>
+               </ul>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+         <div class="row mt-3">
+            <div class="col-2">
+               <div class="form-group">
+                  <select v-model="uf" class="form-control">
+                     @foreach (KeyValuePair<string, string> dic in ViewBag.Ufs as Dictionary<string, string>)
+                     {
+                        <option value="@dic.Key">@dic.Key</option>
+                     }
+                  </select>
+               </div>
+            </div>
+            <div class="col-4">
+               <div class="form-group">
+                  <input type="text" class="form-control" v-model="city" name="city" id="city" placeholder="Cidade">
+               </div>
+            </div>
+            <div class="col-4">
+               <div class="form-group">
+                  <input type="text" class="form-control" v-model="address" name="address" id="address" placeholder="Endereço">
+               </div>
+            </div>
+            <div class="col-2">
+               <button type="button" class="btn btn-primary mb-2" v-on:click="findAddressAsync">Busca</button>
+            </div>
+         </div>
+         <div class="row mt-3">
+            <div class="col-12 d-flex justify-content-center">
+               <div class="spinner-border text-primary" role="status" v-if="status">
+                  <span class="sr-only">Loading...</span>
+               </div>
+            </div>
+            <div class="col-12" v-if="!status">
+               <small>Quantidade: {{zips.length}}</small>
+            </div>
+            <div class="col-6 mt-2" v-for="zip in zips">
+               <div class="card">
+                  <div class="card-header">
+                     <small>cep: </small><em>{{zip.cep}}</em>
+                  </div>
+                  <div class="card-body">
+                     <p class="card-text">
+                        <div class="text-muted">
+                           <small v-if="zip.bairro">
+                              cidade / uf / bairro
+                           </small>
+                           <small v-if="!zip.bairro">
+                              cidade / uf
+                           </small>
+                        </div>
+                        <span v-if="zip.bairro">
+                           {{zip.localidade}} / {{zip.uf}} / {{zip.bairro}}
+                        </span>
+                        <span v-if="!zip.bairro">
+                           {{zip.localidade}} / {{zip.uf}}
+                        </span>
+                     </p>
+                     <p class="card-text">
+                        <div class="text-muted">
+                           <small>
+                              endereço
+                           </small>
+                        </div>
+                        <span v-if="zip.logradouro">
+                           {{zip.logradouro}}
+                        </span>
+                        <span v-if="!zip.logradouro" class="text-danger">
+                           sem endereço
+                        </span>
+                     </p>
+                     <p class="card-text">
+                        <div class="text-muted">
+                           <small>
+                              ibge
+                           </small>
+                        </div>
+                        <span v-if="zip.ibge">
+                           {{zip.ibge}}
+                        </span>
+                        <span v-if="!zip.ibge" class="text-danger">
+                           sem ibge
+                        </span>
+                     </p>
+                     <p class="card-text">
+                        <div class="text-muted">
+                           <small>
+                              complemento
+                           </small>
+                        </div>
+                        <span v-if="zip.complemento">
+                           {{zip.complemento}}
+                        </span>
+                        <span v-if="!zip.complemento" class="text-danger">
+                           sem complemento
+                        </span>
+                     </p>
+                     <p class="card-text">
+                        <div class="text-muted">
+                           <small>
+                              gia
+                           </small>
+                        </div>
+                        <span v-if="zip.gia">
+                           {{zip.gia}}
+                        </span>
+                        <span v-if="!zip.gia" class="text-danger">
+                           sem guia
+                        </span>
+                     </p>
+                     <p class="card-text">
+                        <div class="text-muted">
+                           <small>
+                              siafi
+                           </small>
+                        </div>
+                        <span v-if="zip.siafi">
+                           {{zip.siafi}}
+                        </span>
+                        <span v-if="!zip.siafi" class="text-danger">
+                           sem unidade
+                        </span>
+                     </p>
+                     <p class="card-text">
+                        <div class="text-muted">
+                           <small>
+                              ddd
+                           </small>
+                        </div>
+                        <span v-if="zip.ddd">
+                           {{zip.ddd}}
+                        </span>
+                        <span v-if="!zip.ddd" class="text-danger">
+                           sem ddd
+                        </span>
+                     </p>
+                     <p class="card-text">
+                        <div class="text-muted">
+                           <small>
+                              unidade
+                           </small>
+                        </div>
+                        <span v-if="zip.unidade">
+                           {{zip.unidade}}
+                        </span>
+                        <span v-if="!zip.unidade" class="text-danger">
+                           sem unidade
+                        </span>
+                     </p>
+                     <p class="card-text">
+                        <div class="text-muted">
+                           <small>
+                              Estado
+                           </small>
+                        </div>
+                        <span v-if="zip.estado">
+                           {{zip.estado}}
+                        </span>
+                        <span v-if="!zip.estado" class="text-danger">
+                           sem estado
+                        </span>
+                     </p>
+                     <p class="card-text">
+                        <div class="text-muted">
+                           <small>
+                              região
+                           </small>
+                        </div>
+                        <span v-if="zip.regiao">
+                           {{zip.regiao}}
+                        </span>
+                        <span v-if="!zip.regiao" class="text-danger">
+                           sem região
+                        </span>
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 <script>
-  var app = new Vue({
-    el: '#app',
-    data: {
-      cep: '',
-      city: '',
-      address: '',
-      uf: 'SP',
-      zip: {
-        cep: "",
-        logradouro: "",
-        bairro: "",
-        localidade: "",
-        uf: "",
-        ibge: "",
-        complemento: "",
-        gia: "",
-        siafi: "",
-        ddd: ""
-      },
-      zips: [
-      ],
-      status: false
-    },
-    methods: {
-      initZip: function () {
-        return {
-          cep: "",
-          logradouro: "",
-          bairro: "",
-          localidade: "",
-          uf: "",
-          ibge: "",
-          complemento: "",
-          gia: "",
-          siafi: "",
-          ddd: ""
-        }
-      },
-      initZips: function () {
-        return [];
-      },
-      findAsync: async function () {
-        this.zip = this.initZip();
-        this.status = true;
-        const source = await fetch('/test', {
-          method: 'POST',
-          body: JSON.stringify({ value: this.cep }),
-          headers: new Headers({
-            'Content-Type': 'application/json'
-          })
-        });
-        const result = await source.json();
-        if (result.isValid) {
-          this.zip = result.value;
-        }
-        this.status = false;
-      },
-      findAddressAsync: async function () {
-        this.zips = this.initZips();
-        this.status = true;
-        const source = await fetch('/test/address', {
-          method: 'POST',
-          body: JSON.stringify({ city: this.city, address: this.address, uf: this.uf }),
-          headers: new Headers({
-            'Content-Type': 'application/json'
-          })
-        });
-        const result = await source.json();
-        if (result.isValid) {
-          this.zips = result.value;
-        }
-        this.status = false;
-      }
-    }
-  });
+   var app = new Vue({
+     el: '#app',
+     data: {
+       cep: '',
+       city: '',
+       address: '',
+       uf: 'SP',
+       zip: {
+         cep: "",
+         logradouro: "",
+         bairro: "",
+         localidade: "",
+         uf: "",
+         ibge: "",
+         complemento: "",
+         gia: "",
+         siafi: "",
+         ddd: "",
+         unity: "",
+         state: "",
+         region: ""
+       },
+       zips: [
+       ],
+       status: false
+     },
+     methods: {
+       initZip: function () {
+         return {
+           cep: "",
+           logradouro: "",
+           bairro: "",
+           localidade: "",
+           uf: "",
+           ibge: "",
+           complemento: "",
+           gia: "",
+           siafi: "",
+           ddd: "",
+           unity: "",
+           state: "",  
+           region: ""
+         }
+       },
+       initZips: function () {
+         return [];
+       },
+       findAsync: async function () {
+         this.zip = this.initZip();
+         this.status = true;
+         const source = await fetch('/test', {
+           method: 'POST',
+           body: JSON.stringify({ value: this.cep }),
+           headers: new Headers({
+             'Content-Type': 'application/json'
+           })
+         });
+         const result = await source.json();
+         if (result.isValid) {
+           this.zip = result.value;
+         }
+         this.status = false;
+       },
+       findAddressAsync: async function () {
+         this.zips = this.initZips();
+         this.status = true;
+         const source = await fetch('/test/address', {
+           method: 'POST',
+           body: JSON.stringify({ city: this.city, address: this.address, uf: this.uf }),
+           headers: new Headers({
+             'Content-Type': 'application/json'
+           })
+         });
+         const result = await source.json();
+         if (result.isValid) {
+           this.zips = result.value;
+         }
+         this.status = false;
+       }
+     }
+   });
 </script>
 
